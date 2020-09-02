@@ -62,7 +62,7 @@ public class Server {
                 writer = new PrintWriter(socket.getOutputStream(),true);
             }
             catch (IOException ex) {
-                
+                System.err.println("Error: " + ex);
             }
         }
         
@@ -77,7 +77,7 @@ public class Server {
                 writer.close();
             }
             catch (IOException ex) {
-                
+                System.err.println("Error: " + ex);
             }
         }
         
