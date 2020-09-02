@@ -162,8 +162,11 @@ public class GUIConnection extends JPanel implements ActionListener{
         list_panel.removeAll();
         
         DefaultListModel<String> List = new DefaultListModel<>(); // Creating a chatlist for listing all the chats
+        List.addElement("Planning");
         List.addElement("Testing");
         List.addElement("Implementing");
+        List.addElement("Reviewing");
+        List.addElement("Selling");
         
         Chatlist = new JList(List);// New JList of for Chat List
         constraints.gridx = 2;
