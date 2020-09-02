@@ -1,3 +1,5 @@
+package assignment_ada;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -57,10 +59,12 @@ public class GUIConnection extends JPanel implements ActionListener{
     private JPanel panel_chat;
     private JPanel panel_button;
     private JLayeredPane listPane = new JLayeredPane();
+    private Connection connection;
     
-    public GUIConnection(){
+    public GUIConnection(Connection connection){
         
         super(new BorderLayout());
+        this.connection = connection;
         //Displaying the the Main Panel
         panel = new JPanel(new GridBagLayout()); // Top left corner of the grid
         panel.setBorder(new EmptyBorder(300,300,300,300));// Setting up the position for the empty border
@@ -104,6 +108,10 @@ public class GUIConnection extends JPanel implements ActionListener{
         panel_button = new JPanel(true);
         
         selectScreen();// Method added for screen selection
+    }
+    
+    public GUIConnection() {
+        this(null);
     }
     
     public void selectScreen() {
