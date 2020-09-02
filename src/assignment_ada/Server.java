@@ -81,7 +81,6 @@ public class Server {
                 System.err.println("Error: " + ex);
             }
         }
-
     }
 
     //Reader class 
@@ -104,11 +103,22 @@ public class Server {
 
         @Override
         public void run() {
-            
+
+            String response;
             while (connected == true) {
-                
-                
+                try {
+                    response = reader.readLine();
+                } catch (IOException ex) {
+                    System.err.println("Error: " + ex);
+                }
                 Thread thread = new Thread();
+            }
+            try {
+                reader.close();
+                sockets.close();
+            } catch (IOException ex) {
+                System.err.println("Error: " + ex);
+                System.exit(-1); // Exiting after reading the message;
             }
         }
     }
