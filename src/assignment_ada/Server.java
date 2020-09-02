@@ -27,7 +27,7 @@ public class Server {
     private Server() {
         stopRequested = false;
     }
-
+    //Server Starter
     public void startServer() {
         stopRequested = false;
         ServerSocket serverSocket = null;
@@ -72,7 +72,7 @@ public class Server {
         public void run() {
             writer.println("Testing");
             while (connected == true) {
-
+                //
             }
             try {
                 socket.close();
