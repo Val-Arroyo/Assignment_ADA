@@ -15,7 +15,7 @@ public class Server {
     public static final int HOST_PORT = 6554;
     private boolean stopRequested;
     ServerSocket serversocket = null;
-    private final String official_password = "FIFA@123!";
+    private final String official_password = "COBRAKAI@123!";
     
     public Server(){
         
