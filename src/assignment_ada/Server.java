@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
@@ -48,12 +49,13 @@ public class Server {
             System.err.println("error: "+ex);
         }
     }
-    
+    //Writer class or method
     private class Writer implements Runnable{
 
         private Socket socket;
         private boolean connected;
         private PrintWriter writer;
+        
         
         public Writer(Socket socket) {
             this.socket = socket;
@@ -82,14 +84,19 @@ public class Server {
         }
         
     }
-    
+    //Reader class 
     private class Reader implements Runnable{
-
+        
+        private Socket sockets;
+        private boolean connected = false;
+        private BufferedReader reader;
+        
         @Override
         public void run() {
-            
-        }
-        
+            while(connected == true){
+                
+            }
+        }  
     }
     
     public static void main(String[] args)
