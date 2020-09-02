@@ -6,9 +6,12 @@
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author valar
@@ -91,10 +94,19 @@ public class Server {
         private boolean connected = false;
         private BufferedReader reader;
         
+        public Reader(Socket sockets){
+            this.sockets = sockets;
+            connected = true;
+        }
+        
         @Override
         public void run() {
             while(connected == true){
-                
+                try {
+                    reader = new BufferedReader(new InputStreamReader(sockets.getInputStream()));
+                } catch (IOException ex) {
+                    System.err.println("Error: " + ex);
+                }
             }
         }  
     }

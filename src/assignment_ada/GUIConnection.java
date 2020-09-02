@@ -102,21 +102,22 @@ public class GUIConnection extends JPanel implements ActionListener{
         messageOutput.setEditable(false);
         
         add(panel, BorderLayout.CENTER);
-        
+        // image and send button
         ImageButton.addActionListener(this);
         sendButton.addActionListener(this);
         
+        //LOGIN AND GUEST DISPLAY
         list_panel = new JPanel(true);
         panel_chat = new JPanel(true);
         panel_button = new JPanel(true);
         
         selectScreen();// Method added for screen selection
     }
-    
+    //Constructor for GUI connection
     public GUIConnection() {
         this(null);
     }
-    
+    //Selected Screen
     public void selectScreen() {
         panel.removeAll();
         constraints.fill = GridBagConstraints.HORIZONTAL;
@@ -135,7 +136,7 @@ public class GUIConnection extends JPanel implements ActionListener{
         panel.revalidate(); // Updating purpose
         panel.repaint(); // Updating purpose
     }
-    
+    //Login Screen
     public void loginScreen() {
         panel.removeAll();
         
@@ -166,7 +167,7 @@ public class GUIConnection extends JPanel implements ActionListener{
         panel.revalidate();
         panel.repaint();
     }
-    
+    //Chat Screen after clicking either guess or login
     public void chatScreen() {
         panel.removeAll();
         panel_chat.removeAll();
