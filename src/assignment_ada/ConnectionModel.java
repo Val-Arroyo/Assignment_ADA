@@ -14,4 +14,5 @@ public class ConnectionModel {
     public static final String HOST_NAME = "localhost";
     public static final int HOST_PORT = 6554;
     private int STARWARS = 5;
+    private String CobraKAI;
 }
