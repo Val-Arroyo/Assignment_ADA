@@ -1,3 +1,5 @@
+package assignment_ada;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,11 +8,15 @@
 
 
 
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.io.BufferedReader; // Socket output reader
 import java.io.IOException;
 import java.io.InputStreamReader; // Socket Reader
 import java.io.PrintWriter;
 import java.net.Socket; // To enable to connection between servers
+import javax.swing.JFrame;
 
 
 /**
@@ -24,10 +30,18 @@ public class Connection {
     private Socket sockets;
     private Writer writer;
     private Reader reader;
+    private GUIConnection gui;
 
     //Constructor for Connection
     public Connection() {
-        //DO NOTHING
+        gui = new GUIConnection(this);
+        JFrame frame = new JFrame("Client");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add(gui);
+        frame.pack();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        frame.setLocation(new Point((d.width/2)-(frame.getWidth()/2), (d.height/2)-(frame.getHeight()/2)));
+        frame.setVisible(true);
     }
 
     private class Writer implements Runnable {
@@ -82,7 +96,8 @@ public class Connection {
                 
                 try{
                     String serverMessage = reader.readLine();
-                    System.out.println(serverMessage);
+                    System.out.println(serverMessage); //change for gui
+                    gui.addMessage(serverMessage);
                 }
                 catch(IOException ex){
                     System.err.println("Reader Error: " + ex);
@@ -115,5 +130,10 @@ public class Connection {
        
        writerRunner.start();
        readerRunner.start();
+    }
+    
+    public static void main(String[] args) {
+        Connection connection = new Connection();
+        connection.startConnection();
     }
 }

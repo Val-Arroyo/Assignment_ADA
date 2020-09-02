@@ -48,7 +48,7 @@ public class GUIConnection extends JPanel implements ActionListener{
     private final JButton enter_button, back_button; //Final login button because there is no changes needed    
     private GridBagConstraints constraints;// 
     private JList Chatlist; // Chat list variable for chats
-    private JTextArea Area_text;
+    private JTextArea Area_text, messageOutput;
     
     //Chat Method class
     private JButton ImageButton;
@@ -98,6 +98,9 @@ public class GUIConnection extends JPanel implements ActionListener{
         ImageButton = new JButton("Select Image");
         sendButton = new JButton("Send");
         messageInput = new JTextField(20);
+        messageOutput = new JTextArea();
+        messageOutput.setEditable(false);
+        
         add(panel, BorderLayout.CENTER);
         
         ImageButton.addActionListener(this);
@@ -202,6 +205,7 @@ public class GUIConnection extends JPanel implements ActionListener{
         //Chat scroll pane display
         chatScroll = new JScrollPane(Area_text, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         panel_chat.add(chatScroll);
+        panel_chat.add(messageOutput);
         chatScroll.setPreferredSize(new Dimension(Width - 200, Height - 200));
         
         this.add(list_panel, BorderLayout.WEST);
@@ -233,6 +237,10 @@ public class GUIConnection extends JPanel implements ActionListener{
        if(source == guest_button){
            chatScreen();
        }
+    }
+    
+    public void addMessage(String message) {
+        messageOutput.append(message+"\n");
     }
     
     public static void main(String[] args) {
